@@ -101,17 +101,17 @@
             opacity: .95;
             /* filter: alpha(opacity=15); */
 /*             -moz-opacity: .15; */
-            z-index: 1001;
+            /* z-index: 1001; */
             display: none;
         }
         .web_dialog
         {
             display: none;
             position: absolute;
-            width: 335px;
-            height: 360px;
-            top: 15%;
-            left: 40%; 
+             /* width: 335px;
+            height: 360px; */
+            /*top: 15%;
+            left: 40%;  */
             /* top: 50%;
             left: 50%; */
             /* margin-left: -190px;
@@ -119,7 +119,7 @@
             background-color: #ffffff;
             border: 2px solid #336699;
             padding: 0px;
-            z-index: 1002;
+            /* z-index: 1002; */
             font-family: Verdana;
             font-size: 10pt;
         }
@@ -133,3 +133,6 @@
 .left_align {
 	text-align: left;
 }
+.ui-dialog { z-index: 1000 !important ;}
+
+.ui-front { z-index: 1000 !important; }

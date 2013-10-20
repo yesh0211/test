@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>LCI - AddCount</title>
 <link href="css/allcss.css" rel="stylesheet" type="text/css">
-<script src="js/jQuery1.8.3.js"></script>
+<script src="js/jQuery1.10.2.js"></script>
 <script src="js/allextend-jquery.js" language="JavaScript"></script>
 <script src="js/addcountjs.js" language="JavaScript"></script>
 

@@ -7,6 +7,8 @@ $(document).ready(function()
 				$.post('Invoice', $("#mainform").serialize(),
 						function(data){
 					alert(data);
+					//$("#overlay").hide();
+					//$("#dilog").fadeOut(300);
 					
 				});
 				$("#mainform").resetForm();

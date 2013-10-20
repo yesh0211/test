@@ -12,8 +12,8 @@
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 </script>
 -->
-<script src="js/jQuery1.8.3.js"></script>
-<script src="js/jquery-ui-1.10.0.custom.js" ></script>
+<script src="js/jQuery1.10.2.js"></script>
+<script src="js/jquery-ui-1.10.3.custom.js" ></script>
  
 <script src="js/allextend-jquery.js" language="JavaScript"></script>
 <script src="js/invoicejs.js" language="JavaScript"></script>
@@ -34,13 +34,13 @@
     <tr>
       <td colspan="2" rowspan="2">
         <div align="center">
-          <select name="custid" class="data">
+          <select name="custid" class="data" id="cust">
+          <option value='0'>Select Customer</option>
             <%
             Invoice i = new Invoice();
             Inventory in = new Inventory();
       {
 LinkedHashMap <String,String> cl;
-out.write("<option value='0'>"+"Select Customer"+"</option> \n");
 for (Map.Entry<String,String> e : (cl=i.creditbuyerList()).entrySet())
 	  out.write("<option value='"+e.getKey()+"'>"+e.getValue()+"</option> \n");
       }
@@ -55,7 +55,7 @@ for (Map.Entry<String,String> e : (cl=i.creditbuyerList()).entrySet())
         value="<%if(!mode.equals("view")) out.write(i.billNumber());%>"> 
         </div></td>
     </tr>
-    <tr>
+    <tr id="billdaterow">
       <td height="30"><div align="right"><strong class="label">Bill Date</strong></div></td>
       <td colspan="2" ><div align="center" >
         <input name="billdate" type="text" class="data string" id="billdate" >
@@ -64,7 +64,7 @@ for (Map.Entry<String,String> e : (cl=i.creditbuyerList()).entrySet())
     <tr>
       <td height="39" colspan="5">&nbsp;</td>
     </tr>
-    <tr>
+    <tr class="grid">
       <td width="25%" height="30"><div align="center" class="label"><strong>Count</strong>
         <input name="Addcount" type="button" class="button" id="Addcount" onclick="addCust()" value="+">
       </div></td>
@@ -167,18 +167,18 @@ for (Map.Entry<String,String> e : (cl=i.creditbuyerList()).entrySet())
       </div></td>
       <td height="30" colspan="2" align="center" ><input name="amt5" type="text" class="disableddata amount numdec" id="amt5"></td>
     </tr>
-    <tr>
+    <tr class="grid">
       <td height="30" colspan="3" valign="middle"><div align="right" class="label"><strong>Total</strong></div></td>
       <td colspan="2" valign="middle" align="center"><input name="total" type="text" class="disableddata numdec" id="total"></td>
     </tr>
-    <tr>
+    <tr class="grid">
       <td height="30" colspan="3" valign="middle"><div align="right" class="label"><strong>VAT @ <%String vat =in.vat();%><%=vat%>% </strong></div></td>
       <td colspan="2" valign="middle" align="center" > 
       <input type="hidden" id="vatpc" value="<%=vat%>">
       <input type="text" name="vatamt" class="disableddata numdec" id="vat">
       </td>
     </tr>
-    <tr>
+    <tr class="grid">
       <td height="30" colspan="3" valign="middle"><div align="right" class="label"><strong>Bill Amount </strong></div></td>
       <td colspan="2" valign="middle"  align="center"><input type="text" class="impdisableddata numdec" id="billamt" name="billamt"></td>
     </tr>
@@ -196,7 +196,7 @@ for (Map.Entry<String,String> e : (cl=i.creditbuyerList()).entrySet())
 <br>
 
 <div id="overlay" class="web_dialog_overlay"></div>
-<iframe src="" id="dilog" class="web_dialog"> hi boss</iframe>
+<iframe src="" id="dilog" class="web_dialog"> hi </iframe>
 
 </body>
 </html>

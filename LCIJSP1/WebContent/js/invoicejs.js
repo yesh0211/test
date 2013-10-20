@@ -3,12 +3,15 @@ $(document).ready(function()
 			// reset count fields
 			$("#reset").click(function(){
 				$("#count1").changeVal(0);
+				$(".grid").hide("fast");
+				$("#row1").hide("fast");
+				$("#billdaterow").hide("fast");
 			});
 			
 			$("#submit").click(function(){
 				$.post('Invoice', $("#mainform").serialize(),
 						function(data){
-					if($("#page").val()=="Invoice" || "Cashbill")
+					if($("#page").val()==("Invoice" || "Cashbill"))
 						{
 						if(data!=null)
 							{
@@ -81,7 +84,7 @@ $(document).ready(function()
 		$("#amt5").changeVal("");
 				}
 			}
-			//trigger to cvalculate the total, vat and bill amt
+			//trigger to calculate the total, vat and bill amt
 			$(".amount").change(function () {
 				var amount;
 				if($.isNumeric($('#amt1').val()))
@@ -109,10 +112,21 @@ $(document).ready(function()
 					$('#total').val("");
 					$('#vat').val("");
 					$('#billamt').val("");
-					$("#submit").hide();
+					$("#submit").hide("fast");
 					}
 			});
 			
+			
+			//on change of customer field
+			$("#cust").change(function(){
+				if($("#cust").val()=="0")
+					{
+					$("#billdaterow").hide("fast");
+					$("#reset").click();
+					}
+				else
+					$("#billdaterow").show("fast");
+			});
 			
 			
 			
@@ -197,7 +211,11 @@ $(document).ready(function()
 				}
 			else
 				{
-				$("#billdate").datepicker( { dateFormat: 'dd-M-yy' }  )
+				$("#billdate").datepicker( { dateFormat: 'dd-M-yy',
+											onSelect: function() {
+												$(this).change();
+											}
+				})
 				              .addClass("datepickerfield");					
 				$("#billno").addClass("disableddata string");
 				}
@@ -211,7 +229,11 @@ $(document).ready(function()
 				}
 			else
 				{
-				$("#billdate").datepicker( { dateFormat: 'dd-M-yy' }  )
+				$("#billdate").datepicker( { dateFormat: 'dd-M-yy',
+					onSelect: function() {
+						$(this).change();
+					}
+				})
 				              .addClass("datepickerfield");					
 				$("#billno").addClass("data string");
 				}
@@ -231,24 +253,70 @@ $(document).ready(function()
 			
 			
 			
-			//hide button until validated
-			$("#submit").hide();
+			//hide until validated
+			$("#submit").hide("fast");
 			
-		
+			
+			
+			$("#billdate").on("change", function()
+			{
+				if($("#billdate").value!="")
+					{
+					$(".grid").show("fast");
+					$("#row1").show("fast");					
+					}
+				else
+					{
+					$(".grid").hide("fast");
+					$("#row1").hide("fast");					
+					}
+			});		
 		
 		
 		});
 
+function selectCust()
+{
+	$.ajax({
+		//url:
+	});
+	
+};
 
 function addCust()
 {
+	/*$.get(
+		    "Addcust.jsp",
+		    //{paramOne : 1, paramX : 'abc'},
+		    function(data) {
+		       //alert('page content: ' + data);
+		    	$("#overlay").show();
+		    	$("#dilog").fadeIn(300);
+		    	$("#overlay").unbind("click");
+		    	//$("#dilog").text(data);
+		    	//$("#dilog").html(data);
+		    	$("#dilog").attr("src",data);
+		       //alert(data.getElementsByTagName("div")[0]);
+		    }
+		);*/	
+	//$("#overlay").show();
+	//$("#dilog").fadeIn(300);
+	//$("#overlay").unbind("click");
+	
+	$("#dilog").attr("src","Addcust.jsp");
+	$("#dilog").dialog({modal:true,resizable:true});//,height:'auto',width:'auto'
+	//$("#dilog").dialog();
+};
+
+function addCust1()
+{
 	//popup dilog
 	
-	/*$("#overlay").show();
+	$("#overlay").show();
 	$("#dilog").fadeIn(300);
-	$("#overlay").unbind("click");*/
+	$("#overlay").unbind("click");
 	
-	/*var xmlhttp;
+	var xmlhttp;
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
 	  xmlhttp=new XMLHttpRequest();
@@ -268,12 +336,18 @@ function addCust()
 	    }
 	  };
 	  
-	  xmlhttp.open("POST","Addcust.jsp",true);
+	  xmlhttp.open("GET","Addcust.jsp",true);
 	  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	  xmlhttp.overrideMimeType("text/xml; charset=ISO-8859-1");
-	  xmlhttp.send("action=addcust");
-	  }*/
-	alert("demo only");
+	  xmlhttp.send(null);
+	  
+	  
+	  /*xmlhttp.open("POST","Addcust.jsp",true);
+	  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	  xmlhttp.overrideMimeType("text/xml; charset=ISO-8859-1");
+	  xmlhttp.send("action=addcust");*/
+	  } 
+	//alert("demo only");
 	
 };
 

@@ -132,7 +132,6 @@ public class Invoice extends HttpServlet {
 		default:
 		{
 			PrintWriter pw = response.getWriter();
-			
 			pw.write("Error 404 : Page not found");
 		}
 		}

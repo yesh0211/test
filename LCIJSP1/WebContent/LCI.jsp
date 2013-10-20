@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>LCI - MainPage</title>
 <link href="css/lcicss.css" rel="stylesheet" type="text/css">
-<script src="js/jQuery1.8.3.js"></script>
+<script src="js/jQuery1.10.2.js"></script>
 <script src="js/allextend-jquery.js"></script>
 <script src="js/lcijs.js"></script>
 

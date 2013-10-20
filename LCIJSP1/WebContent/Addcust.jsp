@@ -6,14 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>LCI - AddCust</title>
 <link href="css/allcss.css" rel="stylesheet" type="text/css">
-<script src="js/jQuery1.8.3.js"></script>
+<script src="js/jQuery1.10.2.js"></script>
 <script src="js/allextend-jquery.js" language="JavaScript"></script>
 <script src="js/addcustjs.js" language="JavaScript"></script>
 
 </head>
 <body>
 <div id="addcust" align="center"><form name="mainform" id="mainform" action="Invoice" method="post">
-  <table width="310" height="302" class="string">
+  <!-- <table width="310" height="302" class="string"> -->
+  <table width=auto height=auto class="string">
     <tr>
     <td colspan="2" class="labelH3">New Trader
     <input type="hidden" name="action" id="action" value="addtrader">
